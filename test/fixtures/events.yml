@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  event_date: 2014-05-21 01:54:13
+  fees: 1.5
+
+two:
+  title: MyString
+  event_date: 2014-05-21 01:54:13
+  fees: 1.5
