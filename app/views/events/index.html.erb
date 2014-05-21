@@ -1,6 +1,19 @@
-<% @events.each do |e| %>
-<p>
-	<%=e.title%>
-	<span><%=link_to "Show",event_path(e.id)%></span>
-</p>
-<% end %>
+<div class="container">
+	  <h3>Event List</h3>
+	<table>
+		<tr>
+			<th>Event Name</th>
+			<th>Action</th>
+		</tr>
+
+		<% @events.each do |e| %>
+		<tr>
+			<td><%=e.title%></td>
+			<td><%=link_to "Show",event_path(e.id), :class=>'show_btn'%></td>
+		</tr>
+		<% end %>
+	</table>
+</div>
+
+
+

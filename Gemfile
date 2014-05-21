@@ -48,3 +48,4 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'rails_admin'
+gem 'pry'

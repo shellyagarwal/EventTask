@@ -1,4 +1,74 @@
- Title :: <%= @e.title %><br>
+ <div class="container">
+ 	  <h3>Event Details</h3>
+ 	<table>
+ 		<tr>
+ 			<th>Title</th>
+ 			<td><%= @e.title %></td>
+ 		</tr>
+ 		<tr>
+ 			<th>Ticket Fare</th>
+ 			<% if user_signed_in? %>
+
+ 			<% if current_user.gender == "Female" %>
+
+ 			<td><%= @e.fees - (0.05 * @e.fees) %></td>
+ 			
+ 			<% else %>
+ 			<td><%= @e.fees %></td>
+ 			<% end %>
+ 			<% else %>
+ 			<td><%= @e.fees %></td>
+ 			<% end %>
+ 		</tr>
+ 		<tr>
+ 			<th>Event Date</th>
+ 			<td><%= @e.event_date %></td>
+ 		</tr>
+
+ 		<tr>
+ 			<th>Action</th>
+ 			<td>
+ 				<% if user_signed_in? && @e.event_date >= Time.now %>
+ 				<% if current_user.events.include?(@e) %>
+ 				<%= link_to 'Unattend', {:action => 'unattend', :id => @e.id}, :class=>'show_btn' %>
+ 				<% else %>
+ 				<%= link_to 'Attend', {:action => 'attend', :id => @e.id}, :class=>'show_btn' %>
+ 				<% end %>
+ 				<% end %>
+ 			</td>
+ 		</tr>
+ 		<tr>
+ 			<th>Users Attending</th>
+ 			<td></td>
+ 		</tr>
+ 		<tr>
+ 			<th>Name</th>
+ 			<th>Gender</th>
+ 		</tr>
+ 			<% @e.users.each do |u|%>
+ 			<tr>
+ 				<td>
+					<%= u.name%>
+ 				</td>
+ 				<td>
+ 						<%= u.gender%>				
+ 				</td>
+	 		</tr>
+ 			 <% end %>
+
+
+ 	
+
+ 		<tr>
+ 			<td></td>
+ 			<td>
+ 				 <%= link_to ' Back', root_path, :class=>'show_btn back_btn glyphicon glyphicon-hand-left' %>
+ 			</td>
+ 		</tr>
+ 	</table>
+ </div>
+
+<!--  Title :: <%= @e.title %><br>
  <% if user_signed_in? %>
  	<% if current_user.gender == "Female" %>
  		Fees ::  <%= @e.fees - (0.05 * @e.fees) %>
@@ -22,3 +92,4 @@
  	<% end %>
  <% end %><br/>
  <%= link_to 'Back', root_path %>
+ -->
