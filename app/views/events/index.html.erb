@@ -1,3 +1,6 @@
 <% @events.each do |e| %>
-	<p><%=e.title%></p>
+<p>
+	<%=e.title%>
+	<span><%=link_to "Show",event_path(e.id)%></span>
+</p>
 <% end %>

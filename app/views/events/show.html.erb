@@ -1,0 +1,24 @@
+ Title :: <%= @e.title %><br>
+ <% if user_signed_in? %>
+ 	<% if current_user.gender == "Female" %>
+ 		Fees ::  <%= @e.fees - (0.05 * @e.fees) %>
+ 	<% end %>
+ 	<% else %>
+ 		Fees :: <%= @e.fees %>
+ <% end %>
+ Event_Date :: <%= @e.event_date %><br>
+ Users_Attending :: 
+
+ <% @e.users.each do |u|%>
+ 	<%= u.name%>
+ 	<%= u.gender%> <br/>
+ <% end %>
+
+ <% if user_signed_in? && @e.event_date >= Time.now %>
+ 	<% if current_user.events.include?(@e) %>
+ 		<%= link_to 'Unattend', :action => 'unattend', :id => @e.id %>
+ 	<% else %>
+ 		<%= link_to 'Attend', :action => 'attend', :id => @e.id %>
+ 	<% end %>
+ <% end %><br/>
+ <%= link_to 'Back', root_path %>

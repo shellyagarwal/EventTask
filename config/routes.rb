@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :events
   root 'events#index'
+  match 'attend', to: 'events#attend', via: [:get, :post]
+  match 'unattend', to: 'events#unattend', via: [:get, :post]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
